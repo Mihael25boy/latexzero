@@ -1,0 +1,154 @@
+% ============================================================
+%  commands.tex — Custom macros for Econ PhD lecture notes
+%  Last updated: April 2026
+% ============================================================
+
+% ------------------------------------------------------------
+%  1. Packages (loaded here to keep main .tex clean)
+% ------------------------------------------------------------
+\usepackage{amsmath}
+
+% ------------------------------------------------------------
+%  2. Environment shortcuts
+% ------------------------------------------------------------
+\newcommand{\ba}{\begin{aligned}}
+\newcommand{\ea}{\end{aligned}}
+\newcommand{\bc}{\begin{cases}}
+\newcommand{\ec}{\end{cases}}
+
+% ------------------------------------------------------------
+%  3. Blackboard bold (number sets)
+% ------------------------------------------------------------
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\FF}{\mathbb{F}}
+
+% ------------------------------------------------------------
+%  4. Calligraphic letters (collections, spaces, etc.)
+% ------------------------------------------------------------
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\S}{\mathcal{S}}   % overwrites §
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\renewcommand{\L}{\mathcal{L}}
+
+% ------------------------------------------------------------
+%  5. Bold vectors  (single-letter shortcuts)
+%     For ad-hoc vectors, use \vb{symbol} instead.
+% ------------------------------------------------------------
+\newcommand{\vb}[1]{\mathbf{#1}}          % general bold vector
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\w}{\mathbf{w}}
+\newcommand{\e}{\mathbf{e}}
+\renewcommand{\b}{\mathbf{b}}             % overwrites bar-under accent
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\q}{\mathbf{q}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\X}{\mathbf{X}}
+
+% ------------------------------------------------------------
+%  6. Greek letter shortcuts
+% ------------------------------------------------------------
+\newcommand{\ve}{\varepsilon}
+\newcommand{\s}{\sigma}
+\renewcommand{\l}{\lambda}                % overwrites Polish ł
+
+% ------------------------------------------------------------
+%  7. Delimiters (auto-sizing)
+% ------------------------------------------------------------
+\newcommand{\br}[1]{\left[#1\right]}                 % brackets
+\newcommand{\pr}[1]{\left(#1\right)}                  % parentheses
+\renewcommand{\brace}[1]{\left\{#1\right\}}           % braces
+\newcommand{\abs}[1]{\left|#1\right|}                  % absolute value
+\newcommand{\norm}[2][1]{\|{#2}\|_{#1}}               % norm
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor} % floor
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}    % ceiling
+
+% ------------------------------------------------------------
+%  8. Operators (proper math-operator spacing)
+% ------------------------------------------------------------
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\plim}{plim}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\mnull}{null}
+\DeclareMathOperator{\mspan}{span}
+
+% ------------------------------------------------------------
+%  9. Probability, expectation, variance
+%     Usage:  \Pr{A \given B},  \E{X \given Y},  \Var{X}
+% ------------------------------------------------------------
+\newcommand{\given}{\;\middle|\;}                     % conditional bar
+\renewcommand{\Pr}[1]{\operatorname{Pr}\!\left(#1\right)}
+\newcommand{\E}[2][]{\mathbb{E}_{#1}\!\pr{#2}}
+\newcommand{\Var}[2][]{\operatorname{Var}_{#1}\!\br{#2}}
+\newcommand{\Cov}[2]{\operatorname{Cov}\!\br{#1,#2}}
+
+% ------------------------------------------------------------
+%  10. Convergence and asymptotics
+% ------------------------------------------------------------
+\newcommand{\dto}{\overset{d}{\to}}                   % convergence in distribution
+\newcommand{\pto}{\overset{p}{\to}}                   % convergence in probability
+\newcommand{\asim}{\overset{\text{a}}{\sim}}           % asymptotically distributed
+
+% ------------------------------------------------------------
+%  11. Calculus and analysis
+% ------------------------------------------------------------
+\renewcommand{\d}{\text{d}}                           % upright differential d
+\newcommand{\dd}[2]{\frac{\d #1}{\d #2}}              % total derivative
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}  % partial derivative
+\newcommand{\inv}[1]{{#1}^{-1}}                       % inverse
+
+% ------------------------------------------------------------
+%  12. Relations and logic
+% ------------------------------------------------------------
+\newcommand{\se}{\subseteq}
+\newcommand{\bs}{\setminus}                           % set difference (use \bs not \c)
+\newcommand{\st}{\text{ s.t. }}
+\newcommand{\mif}{\text{ if }}
+
+% ------------------------------------------------------------
+%  13. Summation / union / intersection shortcuts
+% ------------------------------------------------------------
+\newcommand{\add}[1][i]{\sum_{#1 = 1}^n}
+\newcommand{\ply}[1][i]{\prod_{#1 = 1}^n}
+\newcommand{\sinf}[1][k]{\sum_{{#1} = 1}^{\infty}}
+\newcommand{\uinf}[1][k]{\bigcup_{{#1} = 1}^{\infty}}
+\newcommand{\iinf}[1][k]{\bigcap_{{#1} = 1}^{\infty}}
+
+% ------------------------------------------------------------
+%  14. Game theory / mechanism design
+% ------------------------------------------------------------
+\newcommand{\pref}{\succsim}                          % weak preference
+\newcommand{\meet}{\wedge}                            % lattice meet
+\newcommand{\join}{\vee}                              % lattice join
+
+% ------------------------------------------------------------
+%  15. Complex analysis (keep if needed)
+% ------------------------------------------------------------
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+% ------------------------------------------------------------
+%  16. Draft utilities
+% ------------------------------------------------------------
+\newif\ifdraft
+\drafttrue   % set \draftfalse to hide all TODOs
+
+\newcommand{\todo}[1]{%
+  \ifdraft{\textcolor{red}{\textbf{[TODO: #1]}}}{}\fi
+}
+
+% ------------------------------------------------------------
+%  17. Highlighting (for lecture notes)
+% ------------------------------------------------------------
+\newcommand{\match}[1]{\textcolor{ForestGreen}{$\boldsymbol{#1}$}}
